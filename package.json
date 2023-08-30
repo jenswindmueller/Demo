@@ -1,0 +1,14 @@
+{
+  "name": "cypress-demo-reference",
+  "version": "1.0.0",
+  "description": "Reference Solution for applicants tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "christoph zabinski",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.0.0"
+  }
+}
