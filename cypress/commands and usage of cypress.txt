@@ -1,0 +1,12 @@
+npx cypress open //launches the cypress application to run the test in
+
+specific changes done to this projecT: 
+changed default resolution in cypress.config.js, added:
+    viewportWidth: 1280,
+    viewportHeight: 1080,
+
+also added xpath support in e2e.js 
+
+require('cypress-xpath');
+
+npx install cypress-xpath 
