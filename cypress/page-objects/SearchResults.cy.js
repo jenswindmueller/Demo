@@ -6,13 +6,14 @@ class SearchResults {
     getResultTextByHeading(heading) {
         
         return cy.xpath('//h4[@class="list-group-item-heading" and text()="' + heading + '"]//following-sibling::div[@class="excerpt"]//span[@class="excerpt-fragment"]').invoke('text'); 
+        
     }
 
     getResultsAsText() {
         return cy.get('.list-group').invoke('text');
     }
 
-    clickOnResultByHeading(heading) {
+    clickOnResultByHeading2(heading) {
         cy.get('h4')
 
         .contains(heading)
@@ -22,6 +23,11 @@ class SearchResults {
         .parent()
         .parent()
         .click(); 
+        return this;
+    }
+
+    clickOnResultByHeading(heading) {
+        cy.xpath('//a[@class="list-group-item"]//h4[text()="' + heading + '"]').click({ force: true });
         return this;
     }
 

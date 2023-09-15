@@ -4,13 +4,14 @@ import Navigation from '../page-objects/Navigation.cy.js';
 import magnolia from '../fixtures/magnolia.json';
 import SearchResults from '../page-objects/SearchResults.cy.js';
 import Tours from '../page-objects/Tours.cy.js';
+import Careers from '../page-objects/Careers.cy.js';
 
 
 
 const login = new Login();
 const nav = new Navigation();   
 const search = new SearchResults(); 
-//const tours = new Tours(); 
+const tours = new Tours(); 
 
 describe('Magnolia Travels Test - Demo Version For Applications', () => {
 
@@ -56,15 +57,21 @@ describe('Magnolia Travels Test - Demo Version For Applications', () => {
         
     });  
 
-    it.only('Verify that search results are clickable', () => {
+    it('Verify that search results are clickable', () => {
         let EuropeSearch = nav.Search('Europe');
         EuropeSearch.clickOnResultByHeading('Careers');
+        new Careers('about/careers').isLoaded();
     });  
         
-    // it('Verify Tour Options', () => {  
-    //     nav.NavigateTo('Tours > Active');
+    it.only('Verify Tour Options', () => {  
+        nav.NavigateTo('Tours > Active');
+        tours.ViewTour('Hut to Hut in the Swiss Alps')
+        .its('duration')
+        .should('equal', '7 days');
+      
+    
 
-    // });
+    });
 
     // it('Verify Tour Is Bookable', () => {  
     //     nav.NavigateTo('Tours > Active');

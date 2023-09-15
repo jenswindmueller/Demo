@@ -37,7 +37,7 @@ class Navigation {
         .find('li a:contains(' + menu_item.trim() + ')')
         .eq(0)
         .click();
-
+        // only look for nav dropdown if the url did not change. 
         cy.url().then((url) => {
         if (previous_url === url) {
             cy.get('.nav.navbar-nav > li').should('have.class', 'open');
