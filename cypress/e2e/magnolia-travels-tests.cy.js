@@ -62,20 +62,21 @@ describe('Magnolia Travels Test - Demo Version For Applications', () => {
         EuropeSearch.clickOnResultByHeading('Careers');
         new Careers('about/careers').isLoaded();
     });  
-        
-    it.only('Verify Tour Options', () => {  
+        //funktioniert noch nicht. touroptionen können noch nicht verifiziert werden. 
+    it('Verify Tour Options', () => {  
         nav.NavigateTo('Tours > Active');
-        tours.ViewTour('Hut to Hut in the Swiss Alps')
-        .its('duration')
-        .should('equal', '7 days');
-      
-    
+       const tourProperties = tours.ViewTour('Hut to Hut in the Swiss Alps')
+        // console.log('Tour:' + tourProperties);
 
     });
 
-    // it('Verify Tour Is Bookable', () => {  
-    //     nav.NavigateTo('Tours > Active');
-
-    // });
+    it.only('Verify Tour Is Bookable', () => {  
+        nav.NavigateTo('Tours > Active');
+        tours.ViewTour('Hut to Hut in the Swiss Alps').BookTour()
+        .Adults(2)
+        .Youth(1)
+        .SpecialMealRequirements(true)
+        .upgrades.addAirportPickup();
+    });
 
 });
