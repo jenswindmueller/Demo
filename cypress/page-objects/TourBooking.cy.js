@@ -1,35 +1,40 @@
-class TourBooking extends Tours{
+import Tours from './Tours.cy';
 
-    set SpecialMealRequirements(choice=false) {
+class TourBooking  {
+
+    setSpecialMealRequirements(choice=false) {
 
     }
-    set Adults(amount) {
+    setAdults(amount) {
+        return this;
     }
 
-    set Youth(youth) {
+    setYouth(youth) {
+        return this;
     }
 
     #Upgrades = class { 
+             
             addAirportPickup() {
-
+                return this;
             }
 
             addCarbonOffset() {
-                
+                return this;
             }
 
             addSupportLocalCommunity() {
-                
+                return this;
             }
     }
 
     #MealOptions = class {
-        set MealOption(meal_label) {
+        setMealOption(meal_label) {
             //click the radiobutton that contains the meal_label
 
         }
 
-        set AdditionalMealNotes(notes) {
+        setAdditionalMealNotes(notes) {
             //type the notes into the notes input field
         }
         

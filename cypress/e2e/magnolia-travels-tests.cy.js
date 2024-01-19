@@ -72,11 +72,12 @@ describe('Magnolia Travels Test - Demo Version For Applications', () => {
 
     it.only('Verify Tour Is Bookable', () => {  
         nav.NavigateTo('Tours > Active');
-        tours.ViewTour('Hut to Hut in the Swiss Alps').BookTour()
-        .Adults(2)
-        .Youth(1)
-        .SpecialMealRequirements(true)
-        .upgrades.addAirportPickup();
+       const Booking = tours.ViewTour('Go Fly a Kite').BookTour()
+        .setAdults(2)
+        .setYouth(1)
+        .setSpecialMealRequirements(true);
+        // .#Upgrades.addAirportPickup();
+
     });
 
 });

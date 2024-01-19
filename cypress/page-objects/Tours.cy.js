@@ -1,14 +1,16 @@
 import TourBooking from "./TourBooking.cy";
 
 class Tours {
-
+    // constructor() {
+        
+    // }
     ViewTour(tourname){
         cy.get('.tour-card-content h3')
         .contains(tourname)
         .scrollIntoView()
         .click();
 
-        return this
+        return this;
     }
 
     getProductProperties() {
