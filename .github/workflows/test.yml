@@ -11,13 +11,13 @@ jobs:
       steps:
         - name: Checkout
           uses: actions/checkout@v4
-          name: Install a project with a clean slate
+        - name: Install a project with a clean slate
           run: |
             npm ci
             $(npm bin)/cypress chace path
             $(npm bin)/cypress cache list
             $(npm bin)/cypress verify
-          name: Run Cypress tests
+        - name: Run Cypress tests
           run: npm run test:chrome
           continue-on-error: true
         - name: Copy test execution videos
