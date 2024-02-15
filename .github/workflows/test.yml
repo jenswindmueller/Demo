@@ -1,0 +1,35 @@
+name: Cypress Test
+
+# on manual trigger
+on:
+  workflow_dispatch:
+    branches: [ ReportInActions ]
+
+jobs:
+  cypress-run:
+      runs-on: ubuntu-22.04
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          name: Install a project with a clean slate
+          run: |
+            npm ci
+            $(npm bin)/cypress chace path
+            $(npm bin)/cypress cache list
+            $(npm bin)/cypress verify
+          name: Run Cypress tests
+          run: npm run test:chrome
+          continue-on-error: true
+        - name: Copy test execution videos
+          run: |
+            mkdir public
+            cp -r cypress/videos public/videos
+        - name: Merge test results into one
+          run: npm run report:merge
+        - name: Generate HTML report
+          run: npm run report:generate
+        - name: Deploy
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./public
