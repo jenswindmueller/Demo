@@ -44,8 +44,6 @@ class Login {
     
       return this;
     }
-
-
 }
 
 export default Login;
