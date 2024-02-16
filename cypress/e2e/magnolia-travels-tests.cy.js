@@ -5,6 +5,7 @@ import magnolia from '../fixtures/magnolia.json';
 import SearchResults from '../page-objects/SearchResults.cy.js';
 import Tours from '../page-objects/Tours.cy.js';
 import Careers from '../page-objects/Careers.cy.js';
+import TourBooking from '../page-objects/TourBooking.cy.js';
 
 
 
@@ -12,6 +13,7 @@ const login = new Login();
 const nav = new Navigation();   
 const search = new SearchResults(); 
 const tours = new Tours(); 
+const tourBooking = new TourBooking();
 
 describe('Magnolia Travels Test - Demo Version For Applications', () => {
 
@@ -70,14 +72,47 @@ describe('Magnolia Travels Test - Demo Version For Applications', () => {
 
     });
 
+    // it.only('Verify Tour Is Bookable', () => {  
+    //     nav.NavigateTo('Tours > Active');
+    //     const Booking = tours.ViewTour('Go Fly a Kite').BookTour()
+    //         .setAdults(2)
+    //         .setYouth(1)
+    //     Booking
+    //         .addAirportPickup()
+    //         .addCarbonOffset()
+    //         .setSpecialMealRequirements(true)
+    //         .nextStep()
+    //         .setMealOption('Halal')
+    //         .setAdditionalMealNotes('Make it tasty')
+    //         .nextStep();
+            
+            
+
+        
+        
     it.only('Verify Tour Is Bookable', () => {  
         nav.NavigateTo('Tours > Active');
-       const Booking = tours.ViewTour('Go Fly a Kite').BookTour()
-        .setAdults(2)
-        .setYouth(1)
-        .setSpecialMealRequirements(true);
-        // .#Upgrades.addAirportPickup();
-
+        const Booking = tours.ViewTour('Go Fly a Kite').BookTour()
+            .setAdults(2)
+            .setYouth(1)
+        Booking
+            .addAirportPickup()
+            .addCarbonOffset()
+            .setSpecialMealRequirements(true)
+            .nextStep()
+            .setMealOption('Halal')
+            .setAdditionalMealNotes('Make it tasty')
+            .nextStep()
+                .setTitle('Genious')
+                .setFirstName('John')
+                .setLastName('Doe')
+                .setEmail('johndoe@example.com')
+                .setPhone('1234567890')
+                .setCity('New York')
+                .setCountry('United States')
+                .setPostalOrZip('10001')
+                .setProvince('NY')
+                    .nextStep();
     });
 
 });
