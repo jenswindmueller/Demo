@@ -1,12 +1,6 @@
 {
     "username": "superuser",
     "password": "superuser",
-    "testurl": "https://demoauthor.magnolia-cms.com/travel/",
-    "urls": {
-      "meals": "book-tour/meal",
-      "personalDetails": "book-tour/personal-details",
-      "review": "book-tour/review",
-      "booking": "travel/book-tour"
-    }
+    "testurl": "https://demoauthor.magnolia-cms.com/travel/"
   }
   
