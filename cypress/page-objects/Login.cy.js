@@ -5,21 +5,23 @@ class Login {
 
 
     RunMagnolia() {
-        cy.visit(testurl, { failOnStatusCode: false });         
-    } 
+        cy.visit(testurl, { failOnStatusCode: false });
+    }
+
     AwaitLoginError() {
         cy.get('#validation-bubble').should('not.exist');
         return this;
     }
+
     LandingpageLoadedSuccessfully() {
-        
+
         cy.get("div.navbar-spacer").should('be.visible');
         cy.get("div.carousel-caption").should('be.visible');
         cy.window().then((win) => {
             win.addEventListener('unhandledrejection', (event) => {
-              throw event.reason;
+                throw event.reason;
             });
-          });
+        });
 
         console.log('Login page loaded successfully');
         return this;
@@ -38,13 +40,12 @@ class Login {
     }
 
     LoginAs(username, password) {
-      this.TypePassword(password);
-      this.TypeUsername(username);
-      this.ClickLogin();
-    
-      return this;
-    }
+        this.TypePassword(password);
+        this.TypeUsername(username);
+        this.ClickLogin();
 
+        return this;
+    }
 
 }
 

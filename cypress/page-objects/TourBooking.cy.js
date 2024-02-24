@@ -7,6 +7,9 @@ import magnolia from '../fixtures/magnolia.json';
 
 
 class TourBooking  {
+    constructor() {
+        // cy.url().should('include', magnolia.urls.tourBooking);
+    }
 
     setSpecialMealRequirements(choice=false) {
         if (choice) {
@@ -77,6 +80,8 @@ class TourBooking  {
     PersonalDetails = class  {
         constructor() {
             cy.url().should('include', magnolia.urls.personalDetails);
+
+            
         }
         setTitle(title="") {
             cy.get('#title').type(title);
@@ -131,17 +136,6 @@ class TourBooking  {
     };
 
  
-        
-    // confirmBooking() {
-    //     cy.get('body').invoke('text').then((text) => {
-    //         if (text.includes('error')) {
-    //           throw new Error('Booking confirmation failed');
-    //         }
-    //     });
-
-    //     return cy.get('body').invoke('text');
-    // }
-
     previousStep() {
         cy.get('[value="Previous step"]').click();
         return this;
