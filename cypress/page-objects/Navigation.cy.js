@@ -34,6 +34,7 @@ class Navigation {
 
     for (const menu_item of paths) {
         cy.get('.nav.navbar-nav')
+
         .find('li a:contains(' + menu_item.trim() + ')')
         .eq(0)
         .click();

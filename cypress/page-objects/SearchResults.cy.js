@@ -1,3 +1,5 @@
+import Careers from './Careers.cy.js';
+
 class SearchResults {
 
     constructor() {
@@ -13,22 +15,9 @@ class SearchResults {
         return cy.get('.list-group').invoke('text');
     }
 
-    clickOnResultByHeading2(heading) {
-        cy.get('h4')
-
-        .contains(heading)
-        // for some strange reason cypress scrolls down when using contains()
-        // which may cause an element to be moved behind another preventing it from being clicked 
-        // by traveling back to the parent twice whis problem is circumvented
-        .parent()
-        .parent()
-        .click(); 
-        return this;
-    }
-
-    clickOnResultByHeading(heading) {
+    clickOnResultHeading(heading) {
         cy.xpath('//a[@class="list-group-item"]//h4[text()="' + heading + '"]').click({ force: true });
-        return this;
+        return new Careers('about/careers');
     }
 
 

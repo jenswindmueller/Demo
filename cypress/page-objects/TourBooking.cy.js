@@ -1,112 +1,152 @@
 import Tours from './Tours.cy';
+import  Review from './Review.cy'
+import magnolia from '../fixtures/magnolia.json';
+
+
+
+
 
 class TourBooking  {
+    constructor() {
+        // cy.url().should('include', magnolia.urls.tourBooking);
+    }
 
     setSpecialMealRequirements(choice=false) {
+        if (choice) {
+            cy.get('#meal').select('Yes');
+        } else {
+            cy.get('#meal').select('No');
+        }
 
+        return this;
     }
+    
+    _setAmount(selector, amount) {
+        if (!Number.isInteger(amount)) {
+            throw new Error('Amount must be an integer');
+        }
+        cy.get(selector).clear().type(amount.toString());
+        return this;
+    }
+
+
     setAdults(amount) {
+        this._setAmount('#adults', amount);
         return this;
     }
 
-    setYouth(youth) {
+    setYouth(amount) {
+        this._setAmount('#youth', amount);
         return this;
     }
 
-    #Upgrades = class { 
              
-            addAirportPickup() {
-                return this;
-            }
-
-            addCarbonOffset() {
-                return this;
-            }
-
-            addSupportLocalCommunity() {
-                return this;
-            }
+    addAirportPickup() {
+        cy.get('[value="pickup"]').click();
+        return this;
     }
 
-    #MealOptions = class {
+    addCarbonOffset() {
+        cy.get('[value="co2"]').click();
+        return this;
+    }
+
+    addSupportLocalCommunity() {
+        cy.get('[value="support"]').click();
+        return this;
+    }
+
+    Meals = class  {
+        constructor() {
+            cy.url().should('include', magnolia.urls.meals);
+        }
+
         setMealOption(meal_label) {
-            //click the radiobutton that contains the meal_label
-
-        }
-
+            cy.contains('.form-item label', meal_label).click();
+            return this;
+        } 
         setAdditionalMealNotes(notes) {
-            //type the notes into the notes input field
+            cy.get('#additionalMealNotes').type(notes)
+            return this;
         }
-        
-    }
+        nextStep() {
+            cy.get('[value="Next step"]').click();
+            
+            return new (new TourBooking().PersonalDetails)();
+        }
 
-    confirmBooking() {
-        cy.get('body').invoke('text').then((text) => {
-            if (text.includes('error')) {
-              throw new Error('Booking confirmation failed');
-            }
-          });
+    };
 
-        return cy.get('body').invoke('text');
-    }
+    PersonalDetails = class  {
+        constructor() {
+            cy.url().should('include', magnolia.urls.personalDetails);
 
+            
+        }
+        setTitle(title="") {
+            cy.get('#title').type(title);
+            return this;
+        }
+
+        setFirstName(firstname) {
+            cy.get('#firstName').type(firstname);
+            return this;
+        }
+
+        setLastName(lastname) {
+            cy.get('#lastName').type(lastname);
+            return this;
+        }
+
+        setEmail(email) {
+            cy.get('#email').type(email);
+            return this;
+        }
+
+        setPhone(phone) {
+            cy.get('#phone').type(phone);
+            return this;
+        }
+
+        setCountry(country) {
+            cy.get('#country').type(country);
+            return this;
+        }
+
+        setCity(city) {
+            cy.get('#city').type(city);
+            return this;
+        }
+
+        setProvince(province) {
+            cy.get('#province').type(province);
+            return this;
+        }
+
+        setPostalOrZip(postalOrZip) {
+            cy.get('#postalOrZip').type(postalOrZip);
+            return this;
+        }
+
+        nextStep() {
+            cy.get('[value="Next step"]').click();
+            
+            return new Review();
+        }
+    };
+
+ 
     previousStep() {
-        //click the previous step button
+        cy.get('[value="Previous step"]').click();
+        return this;
     }
 
     nextStep() {
-        //click the next step button
+        cy.get('[value="Next step"]').click();
+        return new this.Meals();
     }
 
-    #personalDetails = class {
-        set Title(title="") {
-            //select the title from the dropdown
-        }
 
-        set FirstName(firstname) {
-            //type the firstname into the firstname input field
-        }
-
-        set LastName(lastname) {
-            //type the lastname into the lastname input field
-        }
-
-        set Email(email) {
-            //type the email into the email input field
-        }
-
-        set Phone(phone) {
-            //type the phone into the phone input field
-        }
-
-        set Country(country) {
-            //type the address into the address input field
-        }
-
-        set City(city) {
-            //type the city into the city input field
-        }
-
-        set Province(province) {
-            //type the state into the state input field
-        }
-
-        set Zip(zip) {
-            //type the zip into the zip input field
-        }
-
-        set Country(country) {
-            //select the country from the dropdown
-        }
-
-        set SpecialRequirements(requirements) {
-            //type the requirements into the requirements input field
-        }
-
-        set AdditionalNotes(notes) {
-            //type the notes into the notes input field
-        }
-    }
 }
 
 export default TourBooking;

@@ -12,6 +12,21 @@
   "Trip Style": "Hiking & Trekking",
   "Accommodation": "Mountain Huts",
   "Transport": "Private Vehicle",
-  "Meals": "6 breakfasts, 5 lunches, 5 dinners"
-}
+  "Meals": "6 breakfasts, 5 lunches, 5 dinners",
+    "personalDetails": {
+      "title": "Mr",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890",
+      "country": "Germany",
+      "city": "Berlin",
+      "province": "Berlin",
+      "zip": "10115",
+      "specialRequirements": "Vegetarian meal",
+      "additionalNotes": "Arriving late in the evening"
+  }
   
+}
+
+

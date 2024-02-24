@@ -17,6 +17,7 @@ class Careers {
         cy
         .get('.jumbotron').should('be.visible')
         .get('.text-section').should('be.visible');
+        return this; 
     }
 
 }
