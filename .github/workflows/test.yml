@@ -3,7 +3,7 @@ name: Cypress Test
 # on manual trigger
 on:
   push:
-    branches: [ ReportInActions ]
+    branches: [ cypressCI ]
 
 jobs:
   cypress-run:
@@ -12,7 +12,7 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v4
           with:
-            ref: ReportInActions
+            ref: cypressCI
         - name: Setup Node.js
           uses: actions/setup-node@v4
           with:
