@@ -1,3 +1,6 @@
+import './commands'
+import addContext from 'mochawesome/addContext'
+
 const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
