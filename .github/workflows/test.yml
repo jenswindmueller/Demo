@@ -4,7 +4,7 @@ name: Cypress Test
 on:
   push:
     branches: 
-      - cypressCI
+      - main
 
 jobs:
   cypress-run:
@@ -30,7 +30,7 @@ jobs:
           run: npm run report:generate
         - name: Deploy
           uses: peaceiris/actions-gh-pages@v3
-          if: github.ref == 'refs/heads/cypressCI'
+          if: github.ref == 'refs/heads/main'
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             publish_dir: ./public
