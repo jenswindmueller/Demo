@@ -3,7 +3,8 @@ name: Cypress Test
 # runs afer each push to the cypressCI branch
 on:
   push:
-    branches: [ cypressCI ]
+    branches: 
+      - cypressCI
 
 jobs:
   cypress-run:
@@ -11,8 +12,6 @@ jobs:
       steps:
         - name: Checkout
           uses: actions/checkout@v4
-          with:
-            ref: cypressCI
         - name: Setup Node.js
           uses: actions/setup-node@v4
           with:
