@@ -1,9 +1,10 @@
 name: Cypress Test
 
-# on manual trigger
+# runs afer each push to the cypressCI branch
 on:
-  workflow_dispatch:
-    branches: [ ReportInActions ]
+  push:
+    branches: 
+      - cypressCI
 
 jobs:
   cypress-run:
@@ -29,6 +30,7 @@ jobs:
           run: npm run report:generate
         - name: Deploy
           uses: peaceiris/actions-gh-pages@v3
+          if: github.ref == 'refs/heads/cypressCI'
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             publish_dir: ./public
