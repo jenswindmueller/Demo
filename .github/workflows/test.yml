@@ -1,6 +1,6 @@
 name: Cypress Test
 
-# on manual trigger
+# runs afer each push to the cypressCI branch
 on:
   push:
     branches: [ cypressCI ]
@@ -20,7 +20,6 @@ jobs:
         - run: npm ci
         - name: Run Cypress tests
           run: npm run test:chrome
-          continue-on-error: true
         - name: Copy test execution videos
           run: |
             mkdir public
