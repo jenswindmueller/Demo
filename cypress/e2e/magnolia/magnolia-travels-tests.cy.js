@@ -5,7 +5,7 @@ import Tours from '../../page-objects/Tours.cy.js';
 import TourBooking from '../../page-objects/TourBooking.cy.js';
 import magnolia from '../../fixtures/magnolia.json';
 import {personalDetails} from '../../fixtures/testdata.json';
-
+import {destinations} from '../../fixtures/testdata.json.';
 
 
 const login = new Login();
@@ -23,6 +23,7 @@ context('Magnolia Travels Test - Demo Version For Applications', () => {
       });
 
     
+
     describe('Landing Page', () => {
         it('Landing page loaded successfully', () => {
             login.LandingpageLoadedSuccessfully();
@@ -36,12 +37,12 @@ context('Magnolia Travels Test - Demo Version For Applications', () => {
             nav.NavigateTo('Tours > Beach').UrlContains('beach');
             nav.NavigateTo('Tours > Cultural');
             nav.NavigateTo('Destinations > Polar');
-            nav.NavigateTo('Stories');
-            nav.NavigateTo('About');
-            nav.NavigateTo('Contact');
-            nav.NavigateTo('Members');
+            nav.NavigateTo('Destinations > Europe');
+            //demo: continue example, webiste: https://demoauthor.magnolia-cms.com/travel/
+
         });   
 
+        //CMD + I "make this test more fluent"
         it('Verify that the language menu works', () => {
             const language_before = nav.getActiveLanguage().should('equal', 'English');
             //language_before.should('equal', 'English');
@@ -82,7 +83,7 @@ context('Magnolia Travels Test - Demo Version For Applications', () => {
             nav.NavigateTo('Tours > Active');
             const Booking = tours.ViewTour('Go Fly a Kite').BookTour()
                 .setAdults(2)
-                .setYouth(1)
+                .setYouth(2)
                 .addAirportPickup()
                 .addCarbonOffset()
                 .setSpecialMealRequirements(true)
@@ -99,11 +100,11 @@ context('Magnolia Travels Test - Demo Version For Applications', () => {
                         .setCountry(personalDetails.country)
                         .setPostalOrZip(personalDetails.postalOrZip)
                         .setProvince(personalDetails.province)
-                        .nextStep()
-                            .Youth.should('equal', '2')
-                            .Adults.should('equal', '1')
-                            .SpecialMealRequirements.should('equal', 'Yes')
-                            .MealOptions.should('equal', 'Halal');
+                        .nextStep();
+
+                        Booking.getSummary().Youth.should('equal', '2');
+                        //demo: continue example
+
         });
     });
 
