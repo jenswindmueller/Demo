@@ -5,7 +5,7 @@ import Tours from '../../page-objects/Tours.cy.js';
 import TourBooking from '../../page-objects/TourBooking.cy.js';
 import magnolia from '../../fixtures/magnolia.json';
 import {personalDetails} from '../../fixtures/testdata.json';
-import {destinations} from '../../fixtures/testdata.json.';
+import {destinations} from    '../../fixtures/testdata.json';
 
 
 const login = new Login();
