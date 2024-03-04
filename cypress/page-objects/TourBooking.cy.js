@@ -21,7 +21,7 @@ class TourBooking  {
         return this;
     }
     
-    _setAmount(selector, amount) {
+    setAmount(selector, amount) {
         if (!Number.isInteger(amount)) {
             throw new Error('Amount must be an integer');
         }
@@ -31,12 +31,12 @@ class TourBooking  {
 
 
     setAdults(amount) {
-        this._setAmount('#adults', amount);
+        this.setAmount('#adults', amount);
         return this;
     }
 
     setYouth(amount) {
-        this._setAmount('#youth', amount);
+        this.setAmount('#youth', amount);
         return this;
     }
 
@@ -103,7 +103,7 @@ class TourBooking  {
             return this;
         }
 
-        setPhone(phone) {
+         setPhone(phone) {
             cy.get('#phone').type(phone);
             return this;
         }
