@@ -3,7 +3,7 @@ import { testurl } from "../fixtures/magnolia.json";
 
 class Login {
 
-
+    // CMD + I /explain and /doc
     RunMagnolia() {
         cy.visit(testurl, { failOnStatusCode: false });
     }
