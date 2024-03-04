@@ -29,25 +29,25 @@ class Navigation {
     }
 
     NavigateTo(path_to_page) {
-    const paths = path_to_page.split('>');
-    let previous_url;
+        const paths = path_to_page.split('>');
+        let previous_url;
 
-    for (const menu_item of paths) {
-        cy.get('.nav.navbar-nav')
-
-        .find('li a:contains(' + menu_item.trim() + ')')
-        .eq(0)
-        .click();
-        // only look for nav dropdown if the url did not change. 
-        cy.url().then((url) => {
-        if (previous_url === url) {
-            cy.get('.nav.navbar-nav > li').should('have.class', 'open');
+        for (const menu_item of paths) {
+            cy.get('.nav.navbar-nav')
+                .find('li a:contains(' + menu_item.trim() + ')')
+                .eq(0)
+                .click();
+            
+            // Only look for nav dropdown if the URL did not change.
+            cy.url().then((url) => {
+                if (previous_url === url) {
+                    cy.get('.nav.navbar-nav > li').should('have.class', 'open');
+                }
+                previous_url = url;
+            });
         }
-        previous_url = url;
-        });
-    }
 
-    return this;
+        return this;
     }
 
     UrlContains(urlPart) {
@@ -55,4 +55,5 @@ class Navigation {
         return this;
     }
 }
+
 export default Navigation;
