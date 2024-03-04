@@ -26,14 +26,14 @@
     "specialRequirements": "Vegetarian meal",
     "additionalNotes": "Arriving late in the evening"
   },
-  "destinations": {
-  "north": "North America",
-  "central_south": "Central & South America",
-  "europe": "Europe",
-  "africa_middle_east": "Africa & The Middle East",
-  "asia_pacific": "Asia & The Pacific",
-  "polar": "Polar"
-  }
+    "destinations": {
+    "north": "North America",
+    "central_south": "Central & South America",
+    "europe": "Europe",
+    "africa_middle_east": "Africa & The Middle East",
+    "asia_pacific": "Asia & The Pacific",
+    "polar": "Polar"
+    }
     
 }
 
