@@ -13,20 +13,28 @@
   "Accommodation": "Mountain Huts",
   "Transport": "Private Vehicle",
   "Meals": "6 breakfasts, 5 lunches, 5 dinners",
-    "personalDetails": {
-      "title": "Mr",
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "john.doe@example.com",
-      "phone": "123-456-7890",
-      "country": "Germany",
-      "city": "Berlin",
-      "province": "Berlin",
-      "zip": "10115",
-      "specialRequirements": "Vegetarian meal",
-      "additionalNotes": "Arriving late in the evening"
+  "personalDetails": {
+    "title": "Mr",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "phone": "123-456-7890",
+    "country": "Germany",
+    "city": "Berlin",
+    "province": "Berlin",
+    "postalOrZip": "10115",
+    "specialRequirements": "Vegetarian meal",
+    "additionalNotes": "Arriving late in the evening"
+  },
+  "destinations": {
+  "north": "North America",
+  "central_south": "Central & South America",
+  "europe": "Europe",
+  "africa_middle_east": "Africa & The Middle East",
+  "asia_pacific": "Asia & The Pacific",
+  "polar": "Polar"
   }
-  
+    
 }
 
 
