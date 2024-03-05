@@ -19,7 +19,7 @@ context('Magnolia Travels Test - Demo Version For Applications', () => {
     beforeEach(() => {
         login.RunMagnolia();     
         login.LoginAs(magnolia.username, magnolia.password);
-        login.AwaitLoginError();
+        login.AwaitValidationError();
       });
 
     
@@ -38,6 +38,12 @@ context('Magnolia Travels Test - Demo Version For Applications', () => {
             nav.NavigateTo('Tours > Cultural');
             nav.NavigateTo('Destinations > Polar');
             nav.NavigateTo('Destinations > Europe');
+            nav.NavigateTo(destinations.north);
+            nav.NavigateTo(destinations.polar);
+            nav.NavigateTo(destinations.europe);
+            nav.NavigateTo(destinations.asia);
+            nav.NavigateTo(destinations.africa);
+
             //demo: continue example, webiste: https://demoauthor.magnolia-cms.com/travel/
 
         });   

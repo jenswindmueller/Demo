@@ -8,7 +8,7 @@ class Login {
         cy.visit(testurl, { failOnStatusCode: false });
     }
 
-    AwaitLoginError() {
+    AwaitValidationError() {
         cy.get('#validation-bubble').should('not.exist');
         return this;
     }
