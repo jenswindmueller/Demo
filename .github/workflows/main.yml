@@ -20,6 +20,8 @@ jobs:
           continue-on-error: true
         - name: Merge test results into one
           run: npm run report:merge
+        - name: Create test report as md file
+          run: npm run report:md
         - name: Upload Release Notes to Wiki
           uses: docker://decathlon/wiki-page-creator-action:latest
           env:
