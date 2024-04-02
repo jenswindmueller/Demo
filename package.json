@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
+    "cypress:all": "cypress run --browser chrome",
     "test:chrome": "cypress run --browser chrome --spec 'cypress/e2e/magnolia/magnolia-travels-tests.cy.js'",
     "report:generate": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html",
     "report:merge": "mochawesome-merge cypress/results/json/*.json > cypress/results/report.json",
