@@ -16,7 +16,7 @@ jobs:
             node-version: 20
         - run: npm ci
         - name: Run Cypress tests
-          run: npm run test:chrome
+          run: npm run cypress:all
           continue-on-error: true
         - name: Merge test results into one
           run: npm run report:merge
