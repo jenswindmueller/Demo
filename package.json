@@ -7,7 +7,8 @@
     "test": "test",
     "test:chrome": "cypress run --browser chrome --spec 'cypress/e2e/magnolia/magnolia-travels-tests.cy.js'",
     "report:generate": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html",
-    "report:merge": "mochawesome-merge cypress/results/json/*.json > index.json"
+    "report:merge": "mochawesome-merge cypress/results/json/*.json > cypress/results/report.json",
+    "report:md": "mochawesome-json-to-md -p cypress/results/report.json -o cypress/results/test-report.md"
   },
   "author": "christoph zabinski",
   "license": "ISC",
@@ -129,6 +130,7 @@
     "mimic-fn": "^2.1.0",
     "minimatch": "^3.1.2",
     "minimist": "^1.2.8",
+    "mochawesome-json-to-md": "^1.3.5",
     "ms": "^2.1.2",
     "npm-run-path": "^4.0.1",
     "object-inspect": "^1.12.3",
