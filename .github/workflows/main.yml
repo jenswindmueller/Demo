@@ -1,0 +1,31 @@
+name: Cypress Test
+
+# runs afer each push to the cypressCI branch
+on:
+  workflow_dispatch:
+
+jobs:
+  cypress-run:
+      runs-on: ubuntu-22.04
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+        - name: Setup Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: 20
+        - run: npm ci
+        - name: Run Cypress tests
+          run: npm run test:chrome
+          continue-on-error: true
+        - name: Merge test results into one
+          run: npm run report:merge
+        - name: Upload Release Notes to Wiki
+          uses: docker://decathlon/wiki-page-creator-action:latest
+          env:
+            GH_PAT: ${{ secrets.GH_PAT }}
+            MD_FOLDER: cypress/results
+            ACTION_MAIL: jensw.windmueller@gmail.com
+            ACTION_NAME: jenswindmueller
+            OWNER: jenswindmueller
+            REPO_NAME: Demo
